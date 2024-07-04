@@ -1,0 +1,8 @@
+SpeechRecognition
+pipwin
+pyaudio
+gTTS
+groq
+transformers
+python-dotenv
+streamlit
