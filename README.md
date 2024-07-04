@@ -31,7 +31,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Add your GOOGLE_CLOUD_API_KEY credentials in  the Streamlit app. Get your [GOOGLE_CLOUD_API_KEY here](https://ai.google.dev/gemini-api): 
+Add your GOOGLE_CLOUD_API_KEY credentials in  the Streamlit app. Get your [GOOGLE_CLOUD_API_KEY here](https://ai.google.dev/gemini-api): 
 
 ```ini
 GOOGLE_CLOUD_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
