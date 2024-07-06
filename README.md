@@ -1,5 +1,26 @@
 # Multilingual Assistant 
 
+This Streamlit-based application allows you to interact with a multilingual AI assistant powered by Google Gemini Pro. You can communicate with the assistant through voice commands (using speech recognition) and receive responses in both text and spoken form.
+
+## Features
+ * Voice Input: Speak naturally to the assistant using your microphone.
+ * Text Generation: The assistant leverages Google Gemini Pro to generate intelligent and contextually relevant responses.
+ * Text-to-Speech: Hear the assistant's responses in a natural voice.
+ * Download Speech: Download the assistant's responses as MP3 audio files.
+   
+## Requirements
+* Python 3.7 or higher
+* A Google Cloud API key with access to the Gemini Pro model
+* The following Python libraries (specified in `requirements.txt`):
+  * SpeechRecognition
+  * pipwin
+  * pyaudio
+  * gTTS
+  * google-generativeai
+  * python-dotenv
+  * streamlit
+
+
 
 # How to run?
 ### STEPS:
