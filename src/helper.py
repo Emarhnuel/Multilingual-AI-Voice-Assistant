@@ -4,49 +4,45 @@ from dotenv import load_dotenv
 import os
 from gtts import gTTS
 
-
-print("perfect!!")
 load_dotenv()
 
-GOOGLE_API_KEY=os.getenv("GOOGLE_API_KEY")
-os.environ["GOOGLE_API_KEY"]=GOOGLE_API_KEY
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
 def voice_input():
     r = sr.Recognizer()
 
-    # take the input from the microphone
     with sr.Microphone() as source:
-        print("listening...")
+        print("Listening...")
         audio = r.listen(source)
     try:
         text = r.recognize_google(audio)
-        print("you said: ", text)
+        print("You said: ", text)
         return text
     except sr.UnknownValueError:
-        print("sorry, could not understand the audio")
+        print("Sorry, could not understand the audio")
+        return ""
     except sr.RequestError as e:
-        print("could not request result from google speech recognition service: {0}".format(e))
-
+        print(f"Could not request result from Google Speech Recognition service: {e}")
+        return ""
 
 def text_to_speech(text):
     tts = gTTS(text=text, lang="en")
-
-    # save the speech from the given text in the mp3 format
     tts.save("speech.mp3")
 
-
 def llm_model_object(user_text):
-    # configure the api key
-    # model = "models/gemini-pro"
+    if not GOOGLE_API_KEY:
+        raise ValueError("Google API Key is not set. Please check your .env file.")
+
     genai.configure(api_key=GOOGLE_API_KEY)
+    model = genai.GenerativeModel("gemini-1.5-pro")
 
-    model = genai.GenerativeModel('gemini-pro')
+    try:
+        response = model.generate_content(user_text)
+        result = response.text
+        return result
+    except Exception as e:
+        print(f"An error occurred while generating content: {e}")
+        return "I'm sorry, but I encountered an error while processing your request."
 
-    response = model.generate_content(user_text)
-
-    result = response.text
-
-    return result
-
-
-
+print("Helper module loaded successfully!")
